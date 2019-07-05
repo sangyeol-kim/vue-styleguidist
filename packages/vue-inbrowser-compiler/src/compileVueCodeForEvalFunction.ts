@@ -39,6 +39,7 @@ function prepareVueCodeForEvalFunction(code: string): EvaluableComponent {
 	if (isCodeVueSfc(code)) {
 		return normalizeSfcComponent(code)
 	}
+
 	// if it's not a new Vue, it must be a simple template or a vsg format
 	// lets separate the template from the script
 	if (!/new Vue\(/.test(code)) {
