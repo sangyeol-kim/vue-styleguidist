@@ -54,7 +54,7 @@ new Vue({
 		expect(dummySet.data()).toMatchObject({ param: 'BazFoo' })
 	})
 
-	it('compile code from SFCs', () => {
+	it('should compile code from SFCs without a template', () => {
 		const sut = compileVueCodeForEvalFunction(`
 <script>
 const bar = "foo"
