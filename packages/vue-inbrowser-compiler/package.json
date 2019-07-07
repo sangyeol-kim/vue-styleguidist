@@ -17,6 +17,7 @@
   ],
   "dependencies": {
     "acorn": "^6.1.1",
+    "acorn-jsx": "^5.0.1",
     "babel-plugin-transform-vue-jsx": "^3.7.0",
     "buble": "^0.19.7",
     "vue-template-compiler": "^2.6.10",
