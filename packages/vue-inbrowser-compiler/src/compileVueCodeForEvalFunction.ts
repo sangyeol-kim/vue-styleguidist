@@ -23,14 +23,14 @@ export default function compileVueCodeForEvalFunction(
 	code: string,
 	config?: any
 ): EvaluableComponent {
-	const nonCompiledComponent = prepareVueCodeForEvalFunction(code)
+	const nonCompiledComponent = prepareVueCodeForEvalFunction(code, config)
 	return {
 		...nonCompiledComponent,
 		script: transform(nonCompiledComponent.script, config).code
 	}
 }
 
-function prepareVueCodeForEvalFunction(code: string): EvaluableComponent {
+function prepareVueCodeForEvalFunction(code: string, config: any): EvaluableComponent {
 	let style,
 		vsgMode = false,
 		template
@@ -42,7 +42,7 @@ function prepareVueCodeForEvalFunction(code: string): EvaluableComponent {
 
 	// if it's not a new Vue, it must be a simple template or a vsg format
 	// lets separate the template from the script
-	if (!/new Vue\(/.test(code)) {
+	if (!/new Vue\(/.test(code) && !config.jsx) {
 		const findStartTemplateMatch = /^\W*</.test(code) ? { index: 0 } : code.match(/\n[\t ]*</)
 		const limitScript =
 			findStartTemplateMatch && findStartTemplateMatch.index !== undefined
