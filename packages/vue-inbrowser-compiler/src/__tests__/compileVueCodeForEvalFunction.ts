@@ -64,4 +64,22 @@ export default {}
 		expect(dummySet).toContain('var bar')
 		expect(dummySet).not.toContain('export default')
 	})
+
+	it('should compile JSX', () => {
+		const sut = compileVueCodeForEvalFunction(
+			`
+const HelloWorld = require('./HelloWorld');
+
+const e = {
+	render(){
+		return (
+			<HelloWorld />
+		)
+	}
+}`,
+			{ jsx: 'pragma' }
+		)
+		const dummySet = sut.script
+		expect(dummySet).toContain('pragma( HelloWorld')
+	})
 })

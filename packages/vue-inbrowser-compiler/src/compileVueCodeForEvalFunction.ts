@@ -21,7 +21,7 @@ interface EvaluableComponent {
  */
 export default function compileVueCodeForEvalFunction(
 	code: string,
-	config?: any
+	config: any = {}
 ): EvaluableComponent {
 	const nonCompiledComponent = prepareVueCodeForEvalFunction(code, config)
 	return {
